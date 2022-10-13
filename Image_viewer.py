@@ -322,6 +322,7 @@ class Application(tkinter.Tk):
             self.df.loc[basename, "判定"] = "OK"
             self.df.loc[basename, "コメント"] = comment
             self.txt.delete(0, tkinter.END)
+            self.message = "OK"
             # コンボボックスの表示を変更
             ind = self.return_list_index(str(basename))
             if ind is not None:
@@ -329,6 +330,7 @@ class Application(tkinter.Tk):
                 self.combobox.config(values=student_list)
                 self.combobox.delete(0, tkinter.END)
                 self.combobox.insert(tkinter.END, student_list[ind])
+            self.msg_box()
           
     def push_ng_button(self):
         if self.df is not None:
@@ -341,6 +343,7 @@ class Application(tkinter.Tk):
                 self.df.loc[basename, "判定"] = "NG"
                 self.df.loc[basename, "コメント"] = comment
                 self.txt.delete(0, tkinter.END)
+                self.message = "NG"
                 # コンボボックスの表示を変更
                 ind = self.return_list_index(str(basename))
                 if ind is not None:
